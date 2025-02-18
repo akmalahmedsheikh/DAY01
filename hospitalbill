@@ -1,0 +1,57 @@
+#include <stdio.h>
+#include <string.h>
+
+float calculatebill(char wardtype, int days); 
+
+int main() {
+    char patientname[50];
+    char wardtype;
+    int days;
+    float totalbill;
+    float discount = 0.0;
+    float finalbill;
+
+    printf("enter patient name:\n");
+    scanf("%s", patientname); 
+
+    printf("enter the type of ward(g/s/p)\n");
+    scanf(" %c", &wardtype); 
+
+    printf("enter day of stay\n");
+    scanf("%d", &days);
+
+    totalbill = calculatebill(wardtype, days); 
+
+    if (days > 7) {
+        discount = 0.05 * totalbill;
+    }
+
+    finalbill = totalbill - discount;
+
+    printf("\nPatient Name: %s\n", patientname);
+    printf("Total Bill Before Discount: ₹%.2f\n", totalbill);
+    printf("Discount Applied: ₹%.2f\n", discount);
+    printf("Final Bill Amount: ₹%.2f\n", finalbill);
+
+    return 0;
+}
+
+float calculatebill(char wardtype, int days) {
+    float dailycharge;
+    switch (wardtype) {
+        case 'g':
+            dailycharge = 1000;
+            break;
+        case 's':
+            dailycharge = 2000;
+            break;
+        case 'p':
+            dailycharge = 5000;
+            break;
+        default:
+            dailycharge = 0; 
+            printf("Invalid ward type entered.\n"); 
+            break;
+    }
+    return (dailycharge * days); 
+}
