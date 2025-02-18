@@ -1,12 +1,12 @@
 #include<stdio.h>
-void readdetail(float *salary,int *score,int *exp)
+void readdetail(float *p_salary,int *p_score,int *p_exp)
 {
   printf("enter the salary\n");
-  scanf("%f",&salary);
+  scanf("%f",p_salary);
   printf("enter the score\n");
-  scanf("%d,&score");
+  scanf("%d,p_score");
   printf("enter the experence\n");
-  scanf("%d",&exp);
+  scanf("%d",p_exp);
 }
 int isEligible(float salary,int score,int exp)
 {
