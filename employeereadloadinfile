@@ -78,6 +78,8 @@ int main() {
     
     employee employees[1000];
     reademployee(employees, employeecount);
+    saveemployee(employees, employeecount);
+    loademployee(employees, employeecount);
     displayemployee(employees, employeecount);
     
     employee higestsalariedemployee = findhigestsalary(employees, employeecount);
