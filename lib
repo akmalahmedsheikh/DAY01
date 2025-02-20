@@ -1,0 +1,109 @@
+#include<stdio.h>
+#include<string.h>
+
+struct Fiction_t
+{
+    char title[250];
+    char author[125];
+    float price;
+};
+typedef struct Fiction_t Fiction;
+
+
+struct NonFiction_t
+{
+    char title[250];
+    char subject[500];
+    float price;
+};
+typedef struct NonFiction_t NonFiction;
+ 
+union book_t
+{
+    Fiction fiction;
+    NonFiction nonFiction;
+};
+typedef union BookType_t BookType;
+
+struct Book_t
+{
+   int type;
+   BookType booktype;
+};
+typedef struct  Book_t Book;
+ 
+Book books[1000];
+int bookscount;
+
+
+void addbooks()
+{
+    printf("enter the nuber of books\n");
+    scanf("%d",&bookscount);
+    for (int i = 0; i < bookscount; i++)
+    {
+        printf("type of book(1-fiction),(2-nonfiction)");
+        scanf("%d",&books[i].type);
+        if (books[i].type == 1)
+        {
+            printf("enter the title of the book");
+            scanf("%s",books[i].booktype.fiction.title);
+            printf("enter the author of the book");
+            scanf("%s",books[i].booktype.fiction.author);
+            printf("enter the price of the book");
+            scanf("%f",&books[i].booktype.fiction.price);
+        }
+        else if (books[i].type == 2)
+        {
+            printf("enter the title of the book");
+            scanf("%s",books[i].booktype.nonFiction.title);
+            printf("enter the subject of the book");
+            scanf("%s",books[i].booktype.nonFiction.subject);
+            printf("enter the price of the book");
+            scanf("%f",&books[i].booktype.nonFiction.price);
+        }
+        else
+        {
+            printf("invalid book type");
+        }
+    }
+}           
+void displaybook()
+{
+    printf("displaying the input details");
+    for (int i = 0; i < bookscount; i++)
+    {
+        if (books[i].type == 1)
+            {
+                printf("book type: fiction\n");
+                printf("title: %s\n",books[i].booktype.fiction.title);
+                printf("author: %s\n",books[i].booktype.fiction.author);
+                printf("price: %f\n",books[i].booktype.fiction.price);
+                printf("\n");
+            }
+        else if (books[i].type == 2)
+            {
+                printf("book type: nonfiction\n");
+                printf("title: %s\n",books[i].booktype.nonFiction.title);
+                printf("subject: %s\n",books[i].booktype.nonFiction.subject);
+                printf("price: %f\n",books[i].booktype.nonFiction.price);
+                printf("\n");
+            }
+        else
+           {
+                printf("invalid book type");
+           }
+    }
+    
+}
+
+
+
+
+int main()
+{
+    addbooks();
+    displaybook();
+    return 0;
+}
+
