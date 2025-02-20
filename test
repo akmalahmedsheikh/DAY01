@@ -1,0 +1,11 @@
+void readdata(char name[200][200], int *n, int condition[200])
+ {
+    printf("Enter the number of patients: ");
+    scanf("%d", n);
+    for (int i = 0; i < *n; i++) { 
+        printf("Patient (%d) name: ", i + 1);
+        scanf("%s", name[i]); /
+        printf("Patient (%d) condition: ", i + 1);
+        scanf("%d", &condition[i]); 
+    }
+}
